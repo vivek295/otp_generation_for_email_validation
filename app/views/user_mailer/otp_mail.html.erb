@@ -1,0 +1,6 @@
+<h1>Welcome</h1>
+You have been successfully Registered<br>
+Use OTP to verify your Account<br>
+OTP : <%= @user.otp %><br>
+follow this link to verify your Account..<br>
+<%= link_to "Verify" ,edit_verification_url(@user.activation_token,email: @user.email) %>

@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Log in</h2>
+
+    <%= form_for(:user,url: user_session_path) do |f| %>
+      
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      
+        <%= f.submit "Log in" %>
+  
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>
