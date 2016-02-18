@@ -7,6 +7,8 @@ class VerificationsController < ApplicationController
 
   def update 
     @user=User.find_by(email: params[:email])
+    @user=User.find_by(id: params[:id]) unless @user
+
     if @user && !@user.verified && (@user.otp).to_i==(params[:user][:otp]).to_i
       @user.activate
       flash[:success]="Account verified"

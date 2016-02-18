@@ -11,10 +11,9 @@ class RegistrationsController < Devise::RegistrationsController
     if @user.save
       UserMailer.otp_mail(@user).deliver_now
       flash[:success]="Verify Mail"
-      redirect_to edit_verification_url(@user.activation_token,email: @user.email)
+      redirect_to edit_verification_url(@user.id)
     else
-      flash[:danger]="Account already Exist"
-      redirect_to root_path
+      render 'new'
     end
     
   end
@@ -26,7 +25,7 @@ class RegistrationsController < Devise::RegistrationsController
       @user
     else 
       flash[:danger]="Please Verify your Account"
-      redirect_to edit_verification_url(session[:user_id],email: @user.email)
+      redirect_to edit_verification_url(session[:user_id])
     end
   end
 
